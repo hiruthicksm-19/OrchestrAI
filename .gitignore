@@ -1,0 +1,60 @@
+# ==========================
+# Environment / Secrets
+# ==========================
+.env
+*.env
+.env.*
+!.env.example
+
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pycache
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# ==========================
+# Virtual Environment
+# ==========================
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# ==========================
+# IDE
+# ==========================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Logs
+# ==========================
+*.log
+logs/
+
+# ==========================
+# Test / Coverage
+# ==========================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# ==========================
+# Kiro
+# ==========================
+.kiro/
