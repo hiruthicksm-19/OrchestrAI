@@ -9,9 +9,9 @@ and makes swapping providers trivial.
 
 from __future__ import annotations
 
-from backend.app.providers.base_provider import BaseProvider
-from backend.app.utils.exceptions import RegistryError
-from backend.app.utils.logger import get_logger
+from app.providers.base_provider import BaseProvider
+from app.utils.exceptions import RegistryError
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -46,19 +46,19 @@ def create_provider(
     name = provider_name.lower()
 
     if name == "groq":
-        from backend.app.providers.groq_provider import GroqProvider
+        from app.providers.groq_provider import GroqProvider
         return GroqProvider(api_key=api_key, timeout=timeout)
 
     if name == "mistral":
-        from backend.app.providers.mistral_provider import MistralProvider
+        from app.providers.mistral_provider import MistralProvider
         return MistralProvider(api_key=api_key, timeout=timeout)
 
     if name == "cerebras":
-        from backend.app.providers.cerebras_provider import CerebrasProvider
+        from app.providers.cerebras_provider import CerebrasProvider
         return CerebrasProvider(api_key=api_key, timeout=timeout)
 
     if name == "openai":
-        from backend.app.providers.openai_provider import OpenAIProvider
+        from app.providers.openai_provider import OpenAIProvider
         return OpenAIProvider(api_key=api_key, timeout=timeout)
 
     raise RegistryError(

@@ -21,8 +21,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
-from backend.app.utils.exceptions import ConfigError, RegistryError
-from backend.app.utils.logger import get_logger
+from app.utils.exceptions import ConfigError, RegistryError
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

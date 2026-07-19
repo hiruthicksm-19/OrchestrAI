@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
-from backend.app.utils.exceptions import ConfigError
+from app.utils.exceptions import ConfigError
 
 # Resolve .env relative to the project root (two levels above this file).
 _ENV_PATH = Path(__file__).resolve().parents[3] / ".env"

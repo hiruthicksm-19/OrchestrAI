@@ -18,8 +18,8 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import List
 
-from backend.app.debate.question_classifier import QuestionType
-from backend.app.utils.logger import get_logger
+from app.debate.question_classifier import QuestionType
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

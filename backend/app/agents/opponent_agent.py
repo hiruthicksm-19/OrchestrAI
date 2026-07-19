@@ -27,9 +27,9 @@ from __future__ import annotations
 import time
 from typing import Any, Dict
 
-from backend.app.agents.base_agent import BaseAgent
-from backend.app.debate.debate_state import DebateMessage, ResponseType
-from backend.app.utils.logger import get_logger
+from app.agents.base_agent import BaseAgent
+from app.debate.debate_state import DebateMessage, ResponseType
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

@@ -11,10 +11,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Dict
 
-from backend.app.core.agent_registry import AgentConfig
-from backend.app.providers.base_provider import BaseProvider
-from backend.app.prompts.prompt_manager import PromptManager
-from backend.app.utils.logger import get_logger
+from app.core.agent_registry import AgentConfig
+from app.providers.base_provider import BaseProvider
+from app.prompts.prompt_manager import PromptManager
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -85,7 +85,7 @@ class BaseAgent(ABC):
         user:
             The user turn prompt string.
         """
-        from backend.app.providers.base_provider import Message
+        from app.providers.base_provider import Message
 
         messages = [
             Message(role="system", content=system),

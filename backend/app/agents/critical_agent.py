@@ -13,8 +13,8 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from backend.app.agents.opponent_agent import OpponentAgent
-from backend.app.utils.logger import get_logger
+from app.agents.opponent_agent import OpponentAgent
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

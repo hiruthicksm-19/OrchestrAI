@@ -22,7 +22,7 @@ from __future__ import annotations
 import re
 from enum import Enum
 
-from backend.app.utils.logger import get_logger
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

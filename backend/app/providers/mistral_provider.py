@@ -16,14 +16,14 @@ from tenacity import (
     retry_if_exception_type,
 )
 
-from backend.app.providers.base_provider import BaseProvider, Message
-from backend.app.utils.exceptions import (
+from app.providers.base_provider import BaseProvider, Message
+from app.utils.exceptions import (
     ProviderAuthError,
     ProviderError,
     ProviderRateLimitError,
     ProviderTimeoutError,
 )
-from backend.app.utils.logger import get_logger
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

@@ -23,24 +23,24 @@ import asyncio
 import time
 from typing import Optional, Tuple
 
-from backend.app.agents.agent_factory import create_agent
-from backend.app.agents.base_agent import BaseAgent
-from backend.app.core.agent_registry import AgentRegistry
-from backend.app.core.settings import Settings
-from backend.app.debate.debate_state import (
+from app.agents.agent_factory import create_agent
+from app.agents.base_agent import BaseAgent
+from app.core.agent_registry import AgentRegistry
+from app.core.settings import Settings
+from app.debate.debate_state import (
     DebateResult,
     DebateState,
     ResponseType,
 )
-from backend.app.debate.debate_strategy import (
+from app.debate.debate_strategy import (
     StrategySelector,
     WorkflowStage,
 )
-from backend.app.debate.question_classifier import QuestionClassifier, QuestionType
-from backend.app.prompts.prompt_manager import PromptManager
-from backend.app.providers.provider_factory import create_provider
-from backend.app.utils.exceptions import DebateEngineError
-from backend.app.utils.logger import get_logger
+from app.debate.question_classifier import QuestionClassifier, QuestionType
+from app.prompts.prompt_manager import PromptManager
+from app.providers.provider_factory import create_provider
+from app.utils.exceptions import DebateEngineError
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
