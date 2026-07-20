@@ -1,8 +1,20 @@
 """
-Application-level settings loaded from environment variables / .env file.
+Settings Module - Backward Compatibility Layer
 
-Every configurable value lives here.  The rest of the codebase imports
-from this module — never from os.environ directly.
+This module provides backward compatibility with code that imports Settings
+from app.core.settings.
+
+All configuration should now be imported from app.core.config instead.
+
+For new code:
+    from app.core.config import settings
+    settings.ai.provider
+    settings.ai.default_model
+
+For legacy code (Phase 1):
+    from app.core.settings import Settings
+    settings = Settings()
+    # This still works but uses the legacy API
 """
 
 import os
@@ -36,7 +48,14 @@ class DebateSettings(BaseModel):
 
 
 class Settings(BaseModel):
-    """Top-level application settings."""
+    """
+    Legacy Settings class for backward compatibility.
+
+    New code should import from app.core.config instead:
+        from app.core.config import settings
+    
+    This class maintains the Phase 1 API for existing code.
+    """
 
     # Provider API keys — loaded lazily so tests can patch env vars.
     groq_api_key: str = Field(default_factory=lambda: _require("GROQ_API_KEY"))

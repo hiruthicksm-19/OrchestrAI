@@ -23,6 +23,8 @@ from typing import Any, Dict, List, Optional
 
 from app.utils.exceptions import ConfigError, RegistryError
 from app.utils.logger import get_logger
+from app.core.config import settings
+from app.core import constants
 
 logger = get_logger(__name__)
 
@@ -231,14 +233,14 @@ _DEFAULT_REGISTRY: Dict[str, AgentConfig] = {
     "research_agent": AgentConfig(
         name="research_agent",
         role="research",
-        provider="groq",
-        model="llama-3.3-70b-versatile",
+        provider=settings.ai.provider,
+        model=settings.ai.model,
         system_prompt_key="research_agent",
-        temperature=0.7,
-        max_tokens=2048,
+        temperature=settings.ai.temperature,
+        max_tokens=constants.DEFAULT_TOKEN_LIMITS["research_agent"],
         top_p=1.0,
-        timeout=60,
-        retry_count=2,
+        timeout=settings.ai.timeout,
+        retry_count=settings.ai.max_retries,
         enabled=True,
         priority=1,
         fallback_provider="mistral",
@@ -252,20 +254,20 @@ _DEFAULT_REGISTRY: Dict[str, AgentConfig] = {
         metadata={
             "version": "1.0",
             "owner": "core",
-            "description": "Primary research agent — Groq / Llama 3.3 70B",
+            "description": f"Primary research agent — {settings.ai.provider.upper()} / {settings.ai.model}",
         },
     ),
     "critical_agent": AgentConfig(
         name="critical_agent",
-        role="opponent",           # now maps to OpponentAgent
+        role="opponent",
         provider="openai",
         model="gpt-4o-mini",
         system_prompt_key="opponent_agent",
-        temperature=0.6,
-        max_tokens=2048,
+        temperature=constants.DEFAULT_TEMPERATURES.get("opponent_agent", 0.6),
+        max_tokens=constants.DEFAULT_TOKEN_LIMITS["opponent_agent"],
         top_p=1.0,
-        timeout=60,
-        retry_count=2,
+        timeout=settings.ai.timeout,
+        retry_count=settings.ai.max_retries,
         enabled=True,
         priority=1,
         fallback_provider="groq",
@@ -288,11 +290,11 @@ _DEFAULT_REGISTRY: Dict[str, AgentConfig] = {
         provider="mistral",
         model="mistral-large-latest",
         system_prompt_key="consensus_agent",
-        temperature=0.5,
-        max_tokens=3000,
+        temperature=constants.DEFAULT_TEMPERATURES.get("consensus_agent", 0.5),
+        max_tokens=constants.DEFAULT_TOKEN_LIMITS["consensus_agent"],
         top_p=1.0,
-        timeout=60,
-        retry_count=2,
+        timeout=settings.ai.timeout,
+        retry_count=settings.ai.max_retries,
         enabled=True,
         priority=1,
         fallback_provider="groq",
